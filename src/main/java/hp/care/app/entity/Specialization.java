@@ -25,6 +25,7 @@ public class Specialization {
 	@Column(name="spec_name_col")
 	private String specName;
 	
+	
 	@Column(name="spec_note_col")
 	private String specNote;
 	
