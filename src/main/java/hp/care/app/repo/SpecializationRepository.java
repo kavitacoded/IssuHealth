@@ -6,5 +6,6 @@ import hp.care.app.entity.Specialization;
 
 public interface SpecializationRepository extends JpaRepository<Specialization, Long> {
 
+
 	
 }
