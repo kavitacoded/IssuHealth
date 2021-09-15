@@ -9,7 +9,7 @@ public interface  ISpecializationService {
 	
 	public Long saveSpecialization(Specialization spec);
 	public List<Specialization> getAllSpecializations();
-	public void RemoveSpecialization(Long id);
+	public void removeSpecialization(Long id);
 	public Specialization getOneSpecialization(Long id);
 	public void updateSpecialization(Specialization spec);
 	
