@@ -30,6 +30,7 @@ public class SpecializationController {
 	
 	//2 on submit Form Save Data
 	//read data from uI using model attribute and sent data back to uI using model
+	//or To read Form Data
 	@PostMapping("/save")
 	public String saveForm(
 			@ModelAttribute Specialization specialization,
@@ -67,9 +68,33 @@ public class SpecializationController {
 		return "redirect:all";
 	}
 	
+	/** 
+	 * * 5. Fetch Data into Edit page by Id
+	 * */
+	
+	
+//	 @GetMapping("/edit")
+//	public String showEditPage(
+//			@RequestParam Long id,
+//			Model model
+//			) {
+//		 Specialization spec= service.getOneSpecialization(id);
+//		 model.addAttribute("specialization", spec);
+//		return "SpecializationEdit";
+//	}
+	
 
 	
-	
+	@GetMapping("/edit")
+	public String showEditPage(
+			@RequestParam Long id,
+			Model model
+			) 
+	{
+		Specialization spec = service.getOneSpecialization(id);
+		model.addAttribute("specialization", spec);
+		return "SpecializationEdit";
+	}
 	
 	
 	
