@@ -23,7 +23,7 @@ ndle.min.js"></script>
             </div>
             <div class="card-body">
                 <table class="table table-hover">
-                    <tr>
+                    <tr class="bg-info">
                         <th>ID</th>
                         <th>Code</th>
                         <th>Name</th>
@@ -31,7 +31,7 @@ ndle.min.js"></script>
                         <th>Operations</th>
                     </tr>
                     <tr th:each="ob:${list}">
-                        <td th:text="${ob.id}"></td>
+                        <td th:text="${ob.id}"class="bg-success"></td>
                         <td th:text="${ob.specCode}"></td>
                         <td th:text="${ob.specName}"></td>
                         <td th:text="${ob.specNote}"></td>
