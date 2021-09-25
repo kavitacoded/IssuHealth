@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+    <typeInfo handle="=IssuHealth/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;hp.care.app.service{ISpecializationService.java[ISpecializationService" modifiers="513" timestamp="1632477152255"/>
+    <typeInfo handle="=IssuHealth/C:\/Program Files\/Java\/jdk-16.0.2\/lib\/jrt-fs.jar`jdk.jfr=/maven.pomderived=/true=/=/javadoc_location=/https:\/\/docs.oracle.com\/en\/java\/javase\/16\/docs\/api\/=/&lt;jdk.jfr.internal.consumer(Dispatcher.class[Dispatcher" modifiers="48" timestamp="1630484454955"/>
+    <typeInfo handle="=IssuHealth/C:\/Program Files\/Java\/jdk-16.0.2\/lib\/jrt-fs.jar`java.base=/maven.pomderived=/true=/=/javadoc_location=/https:\/\/docs.oracle.com\/en\/java\/javase\/16\/docs\/api\/=/&lt;java.util.function(Consumer.class[Consumer" modifiers="1537" timestamp="1630484454955"/>
+    <typeInfo handle="=IssuHealth/C:\/Program Files\/Java\/jdk-16.0.2\/lib\/jrt-fs.jar`java.xml=/maven.pomderived=/true=/=/javadoc_location=/https:\/\/docs.oracle.com\/en\/java\/javase\/16\/docs\/api\/=/&lt;com.sun.org.apache.xpath.internal.functions(Function.class[Function" modifiers="1057" timestamp="1630484454955"/>
+    <typeInfo handle="=IssuHealth/C:\/Program Files\/Java\/jdk-16.0.2\/lib\/jrt-fs.jar`java.base=/maven.pomderived=/true=/=/javadoc_location=/https:\/\/docs.oracle.com\/en\/java\/javase\/16\/docs\/api\/=/&lt;java.util.function(Function.class[Function" modifiers="1537" timestamp="1630484454955"/>
+    <typeInfo handle="=IssuHealth/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;hp.care.app.entity{Doctor.java[Doctor" modifiers="1" timestamp="1632475939128"/>
+    <typeInfo handle="=IssuHealth/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;hp.care.app.service{IDoctorService.java[IDoctorService" modifiers="513" timestamp="1632208864722"/>
+    <typeInfo handle="=IssuHealth/C:\/Program Files\/Java\/jdk-16.0.2\/lib\/jrt-fs.jar`java.base=/maven.pomderived=/true=/=/javadoc_location=/https:\/\/docs.oracle.com\/en\/java\/javase\/16\/docs\/api\/=/&lt;java.lang(Object.class[Object" modifiers="33" timestamp="1630484454955"/>
+    <typeInfo handle="=IssuHealth/C:\/Program Files\/Java\/jdk-16.0.2\/lib\/jrt-fs.jar`java.base=/maven.pomderived=/true=/=/javadoc_location=/https:\/\/docs.oracle.com\/en\/java\/javase\/16\/docs\/api\/=/&lt;java.lang(RuntimeException.class[RuntimeException" modifiers="33" timestamp="1630484454955"/>
+</typeInfoHistroy>

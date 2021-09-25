@@ -1,0 +1,11 @@
+package hp.care.app.service;
+
+import java.util.List;
+
+import hp.care.app.entity.Specialization;
+
+public interface IDoctorService {
+
+	
+	
+}

@@ -1,0 +1,5 @@
+package hp.care.app.exception;
+
+public class SpecializationNotFoundException {
+
+}

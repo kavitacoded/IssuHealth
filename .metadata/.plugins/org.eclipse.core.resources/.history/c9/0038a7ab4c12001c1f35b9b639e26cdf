@@ -1,0 +1,5 @@
+package hp.hosp.group.entity;
+
+public @interface Id {
+
+}

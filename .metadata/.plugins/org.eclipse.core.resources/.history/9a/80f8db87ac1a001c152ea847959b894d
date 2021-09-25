@@ -1,0 +1,40 @@
+package hp.care.app.service.Impl;
+
+import java.util.List;
+
+import hp.care.app.entity.Doctor;
+import hp.care.app.service.IDoctorService;
+
+public class DoctorServiceImpl implements IDoctorService {
+
+	@Override
+	public Long SaveDoctor(Doctor doctor) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Doctor> getAllDoctor() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void RemoveDoctor(Long id) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public Doctor getOneDoctor(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void updateDoctor(Doctor doct) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

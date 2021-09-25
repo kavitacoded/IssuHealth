@@ -1,0 +1,17 @@
+package hp.care.app.util;
+
+import java.util.List;
+import java.util.Map;
+
+public class MyCollectionsUtil {
+
+	public static Map<Long, String> convertToMap(List<Object[]> list) {
+		
+		
+		
+		
+		
+		return null;
+	}
+
+}

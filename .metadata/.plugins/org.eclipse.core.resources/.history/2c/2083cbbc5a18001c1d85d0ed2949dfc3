@@ -1,0 +1,65 @@
+package hp.care.app.service.Impl;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+
+
+import hp.care.app.entity.Specialization;
+import hp.care.app.exception.SpecializationNotFoundException;
+import hp.care.app.repo.SpecializationRepository;
+import hp.care.app.service.ISpecializationService;
+
+@Service
+public class SpecializationServiceImpl implements ISpecializationService {
+
+		@Autowired
+		private SpecializationRepository repo;
+
+		@Override
+		public Long saveSpecialization(Specialization spec) {
+			return repo.save(spec).getId();
+		}
+
+		@Override
+		public List<Specialization> getAllSpecializations() {
+			return repo.findAll();
+			
+		}
+
+		@Override
+		public void removeSpecialization(Long id) {	
+			 repo.deleteById(id);
+		}
+
+		@Override
+		public Specialization getOneSpecialization(Long id) {
+//			Optional<Specialization>optional=repo.findById(id);
+//				if(optional.isPresent()) {
+//					return optional.get();
+//				}else {
+//					throw new SpecializationNotFoundException(id+ "not found"); 
+//				}
+			return repo.findById(id).orElseThrow(()->new SpecializationNotFoundException(id+ "not found")
+					); 
+		}
+
+		@Override
+		public void updateSpecialization(Specialization spec) {
+			// TODO Auto-generated method stub
+			repo.save(spec);
+			
+		}
+
+		@Override
+		public boolean isSpecCodeExist(String specCode) {
+			// TODO Auto-generated method stub
+			return repo.getSpecCodeCount(specCode)>0;
+		}
+	
+	
+
+}

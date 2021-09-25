@@ -1,0 +1,9 @@
+package hp.hosp.group.entity;
+
+import lombok.Data;
+
+@Data
+public class Demo {
+
+	private Integer Id;
+}

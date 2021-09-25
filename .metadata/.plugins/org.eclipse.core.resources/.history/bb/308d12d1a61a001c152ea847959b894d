@@ -1,0 +1,16 @@
+package hp.care.app.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name="doctor_tab")
+public class Doctor {
+
+}
