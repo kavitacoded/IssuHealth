@@ -1,5 +1,0 @@
-package hp.care.app.exception;
-
-public class DoctorNotFoundException extends RuntimeException {
-
-}
