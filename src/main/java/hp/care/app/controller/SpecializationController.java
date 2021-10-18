@@ -11,10 +11,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import hp.care.app.entity.Specialization;
+import hp.care.app.exception.SpecializationNotFoundException;
 import hp.care.app.service.ISpecializationService;
+import hp.care.app.view.SpecializationExcelView;
 
 @Controller
 @RequestMapping("/spec")
@@ -42,7 +45,8 @@ public class SpecializationController {
 
 	@GetMapping("/all")
 	// 3 display all Specializations
-	public String viewAll(Model model, @RequestParam(value = "message", required = false) String message) {
+	public String viewAll(Model model,
+			@RequestParam(value = "message", required = false) String message) {
 		List<Specialization> list = service.getAllSpecializations();
 		model.addAttribute("list", list);
 		model.addAttribute("message", message);
@@ -52,12 +56,18 @@ public class SpecializationController {
 
 	// 4 Delete by id
 	@GetMapping("/delete")
-	public String deleteData(@RequestParam Long id,
-			// passing one data to another user redirect attribute
-			RedirectAttributes attributes) {
-		service.removeSpecialization(id);
-
-		attributes.addAttribute("message", "Record (" + id + ") is removed");
+	public String deleteData(
+			@RequestParam Long id,
+			RedirectAttributes attributes
+			) 
+	{
+		try {
+			service.removeSpecialization(id);
+			attributes.addAttribute("message", "Record ("+id+") is removed");
+		} catch (SpecializationNotFoundException e) {
+			e.printStackTrace();
+			attributes.addAttribute("message", e.getMessage());
+		}
 		return "redirect:all";
 	}
 
@@ -66,12 +76,26 @@ public class SpecializationController {
 	 */
 
 	@GetMapping("/edit")
-	public String showEditPage(@RequestParam Long id, Model model) {
-		Specialization spec = service.getOneSpecialization(id);
-		model.addAttribute("specialization", spec);
-		return "SpecializationEdit";
+	public String showEditPage(@RequestParam Long id, Model model,
+			RedirectAttributes attributes) {
+		//before try catch block
+//		Specialization spec = service.getOneSpecialization(id);
+//		model.addAttribute("specialization", spec);
+//		return "SpecializationEdit";
+		
+		//after try catch block
+		String page=null;
+		try {
+			Specialization spec = service.getOneSpecialization(id);
+			model.addAttribute("specialization", spec);
+			page="SpecializationEdit";
+		} catch (SpecializationNotFoundException e) {
+			e.printStackTrace();
+			attributes.addAttribute("message", e.getMessage());
+			page="redirect:all";
+		}
+		return page;	
 	}
-
 	/**
 	 * 6
 	 */
@@ -90,17 +114,32 @@ public class SpecializationController {
 	 */
 	
 	@GetMapping("/checkCode")
-	
 	public @ResponseBody() String validateSpecCode(
-			@RequestParam String code) {
+			@RequestParam String code,
+			@RequestParam Long id) {
 		
 		String message = "";
-		if(service.isSpecCodeExist(code)) {
+		if(id==0 && service.isSpecCodeExist(code)) { //register check
 			message="code+ ,already exists ";//this is response
+		}else if(id!=0 && service.isSpecCodeExistForEdit(code,id)) { //edit check
+		message="code+ ,already exists ";
 		}
-		
 		//this is not view or html file its only response
 		return message;
 	}
+	//8 excel view
+	@GetMapping("/excel")
+	public ModelAndView exportToExcel() {
+		ModelAndView m=new ModelAndView();
+		m.setView(new SpecializationExcelView());
+		//read data from DB
+		List<Specialization>list=service.getAllSpecializations();
+		//send to Excel Impl class
+		m.addObject("list",list);
+		return m;
+	}
+	
+
+	
 
 }

@@ -1,4 +1,4 @@
-package hp.care.app;
+package hp.care.app.specializationtests;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;

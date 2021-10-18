@@ -15,19 +15,24 @@ $(document).ready(function() {
 		var exp = /^[A-Z\s]{4,50}$/;
 		if (val == '') {
 			$("#specCodeError").show();
-			$("#specCodeError").html("djdhfkshf");
+			$("#specCodeError").html("*Please Enter valid Code");
 			$("#specCodeError").css('color', 'red');
 			specCodeError = false;
 		} else if (!exp.test(val)) {
 
 			$("#specCodeError").show();
-			$("#specCodeError").html("character must be between 4-12 char");
+			$("#specCodeError").html("*Character must be between 4-12 char");
 			$("#specCodeError").css('color', 'red');
 			specCodeError = false;
 		} else {
+	                var id = 0; //for register
+	                if($("#id").val()!=undefined) { //edit page
+						specCodeError = true;
+						id = $("#id").val();
+					}
 			$.ajax({
 				url: 'checkCode',
-				data: { "code": val },
+				data: { "code": val,"id":id },
 				success: function(resTxt) {
 					if (resTxt != '') {
 						$("#specCodeError").show();
@@ -101,8 +106,6 @@ $(document).ready(function() {
 	$("#specNote").keyup(function() {
 		validate_note();
 	});
-
-
 
 	//5 on submit
 	$("#specForm").submit(function() {

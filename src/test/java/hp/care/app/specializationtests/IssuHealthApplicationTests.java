@@ -1,4 +1,4 @@
-package hp.care.app;
+package hp.care.app.specializationtests;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,5 +1,9 @@
 server:
   port: 80
+master:
+  user:
+  name: KOL
+  email: nit@gmail.com
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -10,4 +14,14 @@ spring:
     database-platform: org.hibernate.dialect.MySQL8Dialect
     generate-ddl: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: create  
+    mail:    
+      host: smtp.gmail.com
+      port: 587
+      username: kavitasample
+      password: sample98
+      properties:
+       mail:
+       smtp:
+        starttls:
+           enable: true            
