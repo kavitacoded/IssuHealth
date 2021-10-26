@@ -2,8 +2,8 @@ server:
   port: 80
 master:
   user:
-  name: KOL
-  email: nit@gmail.com
+  name: kavita
+  email: kavi20900@gmail.com
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -15,7 +15,7 @@ spring:
     generate-ddl: true
     hibernate:
       ddl-auto: create  
-    mail:    
+mail:    
       host: smtp.gmail.com
       port: 587
       username: kavitasample
@@ -23,5 +23,5 @@ spring:
       properties:
        mail:
        smtp:
-        starttls:
-           enable: true            
+       starttls:
+       enable: true            

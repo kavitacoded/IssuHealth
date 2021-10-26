@@ -16,6 +16,7 @@ import hp.care.app.entity.User;
 import hp.care.app.repo.PatientRepository;
 import hp.care.app.service.IPatientService;
 import hp.care.app.service.IUserService;
+import hp.care.app.util.MyMailUtil;
 import hp.care.app.util.UserUtil;
 
 @Service
@@ -29,19 +30,30 @@ public class PatientServiceImpl implements IPatientService {
 	
 	@Autowired
 	private UserUtil util;
+	@Autowired
+	private MyMailUtil mailUtil;
+	
 	
 	@Override
 	@Transactional
 	public Long SavePatient(Patient patient) {
 		Long id=repo.save(patient).getId();
 		if(id!=null) {
+			String pwd=util.genPwd();
 			User user=new User();
 			user.setDispalyName(patient.getFirstName()+" " +patient.getLastName());
 			user.setUsername(patient.getEmail());
 			user.setPassword(util.genPwd());
 			user.setRole(UsersRoles.Patient.name());
-			userService.saveUser(user);
-			//TODO: Email part is pending
+			Long genId=userService.saveUser(user);
+			if(genId!=null)
+				new Thread(new  Runnable() {
+					public void run() {
+					 String text="User name is"+patient.getEmail() +",password is "+pwd;
+					 mailUtil.send(patient.getEmail(), "Patient Addedd", text);
+					}
+				}).start();
+			
 		}
 		return id;
 	}

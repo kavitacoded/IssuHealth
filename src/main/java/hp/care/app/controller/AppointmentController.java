@@ -1,5 +1,8 @@
 package hp.care.app.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import hp.care.app.entity.Appointment;
+import hp.care.app.entity.Doctor;
 import hp.care.app.exception.AppointmentNotFoundException;
 import hp.care.app.service.IAppointmentService;
 import hp.care.app.service.IDoctorService;
+import hp.care.app.service.ISpecializationService;
 
 @Controller
 @RequestMapping("/appointment")
@@ -22,10 +27,13 @@ public class AppointmentController {
 	@Autowired
 	private IAppointmentService service;
 	@Autowired
-	private IDoctorService doctorserice;
+	private IDoctorService doctorservice;
+	
+	@Autowired
+	private ISpecializationService specializationService;
 	
 	private void CommonUI(Model model) {
-		model.addAttribute("doctors", doctorserice.getDoctorAndNames());
+		model.addAttribute("doctors", doctorservice.getDoctorAndNames());
 	}
 
 	@GetMapping("/register")
@@ -79,4 +87,24 @@ public class AppointmentController {
 		attributes.addAttribute("message","Appointment updated");
 		return "redirect:all";
 	}
+	//view appoints page..
+	@GetMapping("/view")
+	public String viewSlots(Model model,
+			@RequestParam(required=false,defaultValue="0")Long specId
+			) {
+		//fetch data for Spec DropDown
+		Map<Long,String> specMap= specializationService.getSpecIdAndName();
+		model.addAttribute("specializations", specMap);
+		List<Doctor>doclist=null;
+		if(specId==0) { //if they did no select any spec
+		doclist=doctorservice.getAllDoctor();
+		}else {
+		doclist=doctorservice.findDoctorBySpecName(specId);
+		}
+		return "AppointmentSearch";
+	}
+	
+	//search result
+	
+	
 }

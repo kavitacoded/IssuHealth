@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyMailUtil {
 
-	/**@Autowired
+	@Autowired
 	
 	private JavaMailSender mailSender;
 
@@ -50,8 +50,8 @@ public class MyMailUtil {
 			sent = false;
 		}
 		return sent;
-	}**/
-	/** overloaded methods
+	}
+	// overloaded methods
 	public boolean send(
 			String to,
 			String subject,
@@ -74,6 +74,6 @@ public class MyMailUtil {
 	{
 		return send(to, subject, text,null);
 	}
-**/
+
 
 }

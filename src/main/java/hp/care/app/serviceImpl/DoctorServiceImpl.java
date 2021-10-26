@@ -14,6 +14,7 @@ import hp.care.app.repo.DoctorRepository;
 import hp.care.app.service.IDoctorService;
 import hp.care.app.service.IUserService;
 import hp.care.app.util.MyCollectionsUtil;
+import hp.care.app.util.MyMailUtil;
 import hp.care.app.util.UserUtil;
 @Service 
 public class DoctorServiceImpl implements IDoctorService {
@@ -26,18 +27,29 @@ public class DoctorServiceImpl implements IDoctorService {
 	@Autowired
 	private UserUtil util;
 	
+	@Autowired
+	private MyMailUtil mailUtil;
+	
 	@Override
 	public Long SaveDoctor(Doctor doc) {
 		
 		Long id = repo.save(doc).getId();
 		if(id==null) {
+			String pwd=util.genPwd();
 			User user=new User();
 			user.setDispalyName(doc.getFirstName()+ " " +doc.getLastName());
 			user.setUsername(doc.getEmail());
 			user.setPassword(util.genPwd());
 			user.setRole(UsersRoles.Doctor.name());
-			userService.saveUser(user);
-			//TODO:Email part is pending
+			Long genId=userService.saveUser(user);
+			
+			if(genId!=null)
+				new Thread(new  Runnable() {
+					public void run() {
+					 String text="User uname is"+doc.getEmail() +",password is "+pwd;
+					 mailUtil.send(doc.getEmail(), "DOCTOR Addedd", text);
+					}
+				}).start();
 		}
 		return id;
 	}
@@ -79,6 +91,13 @@ public class DoctorServiceImpl implements IDoctorService {
 		return MyCollectionsUtil.convertToMapIndex(list);
 		
 	}
+
+	@Override
+	public List<Doctor> findDoctorBySpecName(Long specId) {
+		// TODO Auto-generated method stub
+		return repo.findDoctorBySpecName(specId);
+	}
+
 	
 		
 }

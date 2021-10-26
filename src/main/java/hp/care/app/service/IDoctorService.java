@@ -1,3 +1,4 @@
+
 package hp.care.app.service;
 
 import java.util.List;
@@ -13,4 +14,5 @@ public interface IDoctorService {
 	public Doctor getOneDoctor(Long id);
 	public void updateDoctor(Doctor doc);
 	public Map<Long, String>getDoctorAndNames();
+	public List<Doctor> findDoctorBySpecName(Long specId);
 }
