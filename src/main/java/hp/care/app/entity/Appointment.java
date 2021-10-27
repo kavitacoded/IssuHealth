@@ -41,7 +41,6 @@ public class Appointment {
 	@Column(name = "app_dte_col" )
 	private Date date;
 	
-	
 	@Column(name = "app_slots_col")
 	private Integer noOfSlots;
 	

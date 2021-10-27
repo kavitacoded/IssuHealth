@@ -71,7 +71,7 @@ public class DoctorController {
 			String message ="Doctor ("+id+") is Created";
 			attributes.addAttribute("message",message);
 			
-			/*if(id!=null) {
+			if(id!=null) {
 				new Thread(new Runnable() {
 					
 					@Override
@@ -85,7 +85,7 @@ public class DoctorController {
 					}
 				}).start();
 	
-			}*/
+			}
 			return "redirect:register";
 	}
 	
